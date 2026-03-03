@@ -1,0 +1,61 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h3 class="mb-4">
+                    {% if object %}
+                        Edit Post
+                    {% else %}
+                        New Post
+                    {% endif %}
+                </h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        {{ form.title.label_tag }}
+                        {{ form.title }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.content.label_tag }}
+                        {{ form.content }}
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{ form.published }}
+                        {{ form.published.label_tag }}
+                        {% if form.published.errors %}
+                    <div class="text-danger">{{ form.published.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        {% if object %}
+                            Save Changes
+                        {% else %}
+                            Create Post
+                        {% endif %}
+                    </button>
+
+                    <a href="{% url 'post_list' %}" 
+                       class="btn btn-secondary ms-2">
+                        Cancel
+                    </a>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
