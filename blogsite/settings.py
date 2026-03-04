@@ -108,7 +108,7 @@ else:
     # Production (Railway) → PostgreSQL
     DATABASES = {
         'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
+            default=os.environ.get('DATABASE_URL', ''),
             conn_max_age=600,
             ssl_require=True
         )
@@ -157,3 +157,17 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
