@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-pkpmq65y2=0)a+2*mff(lb&v1byd-!b9b8s^ptfmlc5qf$1mf2
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 #This works now 
 ALLOWED_HOSTS = [
-    'blog-project-repo.up.railway.app',   # Railway domain
+    'blog-project-repo-production.up.railway.app',   # Railway domain
     '127.0.0.1',                          # local dev
     'localhost',
     '*'                                   # optional for quick testing
